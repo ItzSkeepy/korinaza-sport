@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.ORINAZA SPORT+ | Le Magasin de Sport le plus équipé de Lomé</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <header id="header">
+        <nav>
+            <a href="index.html" class="logo">K.ORINAZA <span>SPORT+</span></a>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <li><a href="#produits">Produits</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="admin.html" style="color: var(--vert-citron);">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="accueil">
+        <div class="hero-bg" id="heroBg">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="hero-content">
+            <h1>K.ORINAZA SPORT+</h1>
+            <p class="hero-slogan">Le Magasin de Sport et de vêtements le plus équipé de tout Lomé</p>
+            <a href="#produits" class="cta-button">Découvrir nos produits</a>
+        </div>
+    </section>
+
+    <section class="section" id="categories" style="background: var(--gris);">
+        <div class="section-content">
+            <h2 class="section-title">Nos Catégories</h2>
+            <div class="categories-grid" id="categoriesGrid">
+                <div class="empty-message">Chargement...</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="produits">
+        <div class="section-content">
+            <h2 class="section-title">Nos Produits</h2>
+            <div class="filters" id="filters">
+                <button class="filter-btn active" data-category="all">Tous</button>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <div class="empty-message">Chargement...</div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">K.ORINAZA <span>SPORT+</span></div>
+            <div class="footer-info">
+                <p><strong>Le Magasin de Sport et de vêtements le plus équipé de tout Lomé</strong></p>
+                <p>📍 Lomé, Togo</p>
+                <p>📞 +228 XX XX XX XX</p>
+                <p>✉️ contact@korinazasport.tg</p>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link">f</a>
+                <a href="#" class="social-link">📷</a>
+                <a href="#" class="social-link">in</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2026 K.ORINAZA SPORT+ - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

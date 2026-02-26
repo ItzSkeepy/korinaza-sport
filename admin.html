@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - K.ORINAZA SPORT+</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>K.ORINAZA <span>SPORT+</span></h2>
+                <p style="opacity: 0.7; margin-top: 0.5rem;">Administration</p>
+            </div>
+            <nav>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#" class="active" data-section="dashboard">
+                            <span class="menu-icon">📊</span>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-section="products">
+                            <span class="menu-icon">📦</span>
+                            <span>Produits</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-section="categories">
+                            <span class="menu-icon">🏷️</span>
+                            <span>Catégories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <span class="menu-icon">🌐</span>
+                            <span>Voir le site</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <h1 id="pageTitle">Tableau de bord</h1>
+                <div class="user-info">
+                    <div class="user-avatar">A</div>
+                    <div>
+                        <div style="font-weight: 700;">Administrateur</div>
+                        <div style="font-size: 0.9rem; color: #666;">K.ORINAZA SPORT+</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="content-section active">
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon products">📦</div>
+                        <div class="stat-value" id="totalProducts">0</div>
+                        <div class="stat-label">Produits</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon categories">🏷️</div>
+                        <div class="stat-value" id="totalCategories">0</div>
+                        <div class="stat-label">Catégories</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon sales">🛒</div>
+                        <div class="stat-value">156</div>
+                        <div class="stat-label">Ventes ce mois</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">💰</div>
+                        <div class="stat-value">2.4M</div>
+                        <div class="stat-label">Chiffre d'affaires (FCFA)</div>
+                    </div>
+                </div>
+
+                <div class="data-table">
+                    <h3 style="padding: 1.5rem; border-bottom: 2px solid var(--gris);">Produits récents</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Nom</th>
+                                <th>Catégorie</th>
+                                <th>Prix</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentProducts">
+                            <tr><td colspan="4" style="text-align: center; padding: 2rem;">Chargement...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="products" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Gestion des Produits</h2>
+                    <button class="btn btn-primary" onclick="openProductModal()">+ Nouveau produit</button>
+                </div>
+
+                <div id="productAlert"></div>
+
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Nom</th>
+                                <th>Catégorie</th>
+                                <th>Prix</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTable">
+                            <tr><td colspan="5" style="text-align: center; padding: 2rem;">Chargement...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Categories Section -->
+            <div id="categories" class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Gestion des Catégories</h2>
+                    <button class="btn btn-primary" onclick="openCategoryModal()">+ Nouvelle catégorie</button>
+                </div>
+
+                <div id="categoryAlert"></div>
+
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Nom</th>
+                                <th>Nombre de produits</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoriesTable">
+                            <tr><td colspan="4" style="text-align: center; padding: 2rem;">Chargement...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Produit -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Nouveau Produit</h2>
+                <button class="close-modal" onclick="closeProductModal()">×</button>
+            </div>
+            <form id="productForm">
+                <div class="form-group">
+                    <label class="form-label">Nom du produit *</label>
+                    <input type="text" id="productName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Catégorie *</label>
+                    <select id="productCategory" class="form-select" required>
+                        <option value="">Sélectionner une catégorie</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Prix (FCFA) *</label>
+                    <input type="text" id="productPrice" class="form-input" placeholder="Ex: 25,000" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">URL de l'image *</label>
+                    <input type="url" id="productImage" class="form-input" placeholder="https://..." required>
+                    <small style="color: #666;">Vous pouvez utiliser des images de Unsplash.com</small>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Catégorie -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Nouvelle Catégorie</h2>
+                <button class="close-modal" onclick="closeCategoryModal()">×</button>
+            </div>
+            <form id="categoryForm">
+                <div class="form-group">
+                    <label class="form-label">Nom de la catégorie *</label>
+                    <input type="text" id="categoryName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">URL de l'image *</label>
+                    <input type="url" id="categoryImage" class="form-input" placeholder="https://..." required>
+                    <small style="color: #666;">Vous pouvez utiliser des images de Unsplash.com</small>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeCategoryModal()">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
